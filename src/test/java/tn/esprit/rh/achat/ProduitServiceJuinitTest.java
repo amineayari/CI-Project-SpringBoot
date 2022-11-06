@@ -56,7 +56,7 @@ public class ProduitServiceJuinitTest {
         Produit produitUpdated  = produitService.updateProduit(p2);
         Assertions.assertEquals(p2.getCodeProduit(), produitUpdated.getCodeProduit());
     }
-
+    /*
     @Test
     @Order(5)
     public void testDeleteUser() {
@@ -65,4 +65,5 @@ public class ProduitServiceJuinitTest {
         Assertions.assertNull(produitService.retrieveProduit(2L));
         produitRepository.deleteAll();
     }
+    */
 }
