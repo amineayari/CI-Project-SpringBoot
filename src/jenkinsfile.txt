@@ -5,7 +5,7 @@ pipeline {
             stage('Checkout GIT'){
                 steps{
                     echo 'Pulling...';
-                    git branch: 'yosr',
+                    git branch: 'yosrr',
                     url : 'https://github.com/amineayari/CI-Project-SpringBoot.git';
                 }
 
