@@ -19,7 +19,7 @@ import java.util.List;
 @SpringBootTest
 @TestMethodOrder(OrderAnnotation.class)
  class ProduitServiceJuinitTest {
-
+/*
     @Autowired
     IProduitService produitService;
 
@@ -48,7 +48,7 @@ import java.util.List;
         Produit produitRetrieved = produitService.retrieveProduit(1L);
         Assertions.assertEquals(1L, produitRetrieved.getIdProduit().longValue());
     }*/
-
+/*
     @Test
     @Order(3)
      void testModifyProduit()   {

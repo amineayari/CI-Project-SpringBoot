@@ -30,7 +30,7 @@ import static org.mockito.Mockito.times;
 @RunWith(MockitoJUnitRunner.class)
 public class ProduitServiceMockTest {
 
-
+/*
     @Mock
     StockRepository sr;
     @InjectMocks
@@ -118,7 +118,7 @@ public class ProduitServiceMockTest {
         System.out.println("6");
     }
 
-
+*/
 
 
 }
