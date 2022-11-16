@@ -18,7 +18,7 @@ import java.util.List;
 
 @SpringBootTest
 @TestMethodOrder(OrderAnnotation.class)
-public class ProduitServiceJuinitTest {
+ class ProduitServiceJuinitTest {
 
     @Autowired
     IProduitService produitService;
@@ -30,14 +30,14 @@ public class ProduitServiceJuinitTest {
     Produit p2 = new Produit(66L, "5681","produit5",120);
     @Test
     @Order(1)
-    public void testaddProdiut() {
+     void testaddProdiut() {
         Produit produitAdded =  produitService.addProduit(p1);
         Assertions.assertEquals(produitAdded.getCodeProduit(), produitAdded.getCodeProduit());
     }
 
     @Test
     @Order(2)
-    public void testRetrieveAllProduits() {
+     void testRetrieveAllProduits() {
         List<Produit> listProduits = produitService.retrieveAllProduits();
         Assertions.assertEquals(listProduits.size(), listProduits.size());
     }
@@ -51,7 +51,7 @@ public class ProduitServiceJuinitTest {
 
     @Test
     @Order(3)
-    public void testModifyProduit()   {
+     void testModifyProduit()   {
 
         Produit produitUpdated  = produitService.updateProduit(p2);
         Assertions.assertEquals(p2.getCodeProduit(), produitUpdated.getCodeProduit());

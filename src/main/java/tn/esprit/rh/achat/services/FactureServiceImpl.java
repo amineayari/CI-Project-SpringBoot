@@ -73,12 +73,10 @@ public class FactureServiceImpl implements IFactureService {
 
 	@Override
 	public void cancelFacture(Long factureId) {
-		// Méthode 01
-		//Facture facture = factureRepository.findById(factureId).get();
+
 		Facture facture = factureRepository.findById(factureId).orElse(new Facture());
 		facture.setArchivee(true);
 		factureRepository.save(facture);
-		//Méthode 02 (Avec JPQL)
 		factureRepository.updateFacture(factureId);
 	}
 
@@ -108,8 +106,8 @@ public class FactureServiceImpl implements IFactureService {
 	public float pourcentageRecouvrement(Date startDate, Date endDate) {
 		float totalFacturesEntreDeuxDates = factureRepository.getTotalFacturesEntreDeuxDates(startDate,endDate);
 		float totalRecouvrementEntreDeuxDates =reglementService.getChiffreAffaireEntreDeuxDate(startDate,endDate);
-		float pourcentage=(totalRecouvrementEntreDeuxDates/totalFacturesEntreDeuxDates)*100;
-		return pourcentage;
+		return (totalRecouvrementEntreDeuxDates/totalFacturesEntreDeuxDates)*100;
+
 	}
 	
 
