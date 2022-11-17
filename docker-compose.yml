@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   achat:
-    image: achat
+    image: emnabenmassaoud/achat:1.1
     hostname: achatapp
     environment:
       - DB_HOST=172.20.199.3
