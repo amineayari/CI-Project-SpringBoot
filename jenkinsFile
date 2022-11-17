@@ -1,0 +1,53 @@
+pipeline {
+    environment {
+        EMAIL_RECIPIENTS = "seifeddine.bouazza@esprit.tn"
+        registry = 'achat'
+        registryCredential = 'dockerHub'
+        dockerImage = ''
+    }
+    agent any
+    tools {
+        maven 'maven'
+        jdk 'jdk'
+    }
+    stages {
+        stage('Clone project from github') {
+            steps {
+               
+               
+                git branch: "emnabm",credentialsId: 'MyGithub',url: 'https://github.com/amineayari/CI-Project-SpringBoot.git'
+                
+     
+            }
+        }
+        stage('build & tests') {
+            steps {
+                bat 'mvn clean install  '
+            }
+        }
+        stage('Sonar') {
+            steps {
+                // bat 'mvn org.codehaus.mojo:sonar-maven-plugin:sonar -Dsonar.host.url=http://localhost:9000/'
+                bat 'mvn sonar:sonar'
+            }
+        }
+      stage('Deploy to Nexus') {
+          steps {
+              bat 'mvn deploy:deploy-file -DgroupId=tn.esprit.rh -DartifactId=achat -Dversion=1.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/achat-1.0.jar'
+          }
+      }
+    stage('Build Docker image') {
+        steps {
+             bat 'docker build -t achat .'
+         }
+      }
+      
+    stage('Launch application : docker-compose') {
+        steps {
+             bat 'docker-compose up -d'
+         }
+      }
+      
+
+     }
+}
