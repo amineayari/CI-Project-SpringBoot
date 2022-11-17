@@ -29,7 +29,7 @@ public class OperateurServiceImplTest {
 
     @Test
     public void testAddOperateur() {
-        log.info("on va tester  l'ajout d'un nouveau produit: " + operateur.toString());
+       // log.info("on va tester  l'ajout d'un nouveau produit: " + operateur.toString());
         operateurRepository.save(operateur);
         assertTrue(operateurRepository.findById(Long.parseLong("1")).isPresent());
 
@@ -43,7 +43,7 @@ public class OperateurServiceImplTest {
 
     @Test
     public void testDeleteOperateur() {
-        log.info("on va tester la supprission du produit: " + operateur.toString());
+       // log.info("on va tester la supprission du produit: " + operateur.toString());
         operateurRepository.delete(operateur);
         assertFalse(operateurRepository.findById(Long.parseLong("1")).isPresent());
     }
